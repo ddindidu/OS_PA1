@@ -142,7 +142,6 @@ static int run_command(int nr_tokens, char *tokens[])
     else{
         int waitstatus;
         pid_t pid = fork();
-
         if(pid<0){
             perror("fork failed");
             exit(1);
@@ -152,7 +151,7 @@ static int run_command(int nr_tokens, char *tokens[])
             if(execvp(tokens[0], tokens)<0){
                 fprintf(stderr, "No such file or directory\n");
                 close(1);
-                exit(0);
+                _Exit(3);
             }
         }
         else{
