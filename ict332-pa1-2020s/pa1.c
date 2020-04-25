@@ -66,10 +66,11 @@ static char __prompt[MAX_TOKEN_LEN] = "$";
  */
 int parse_command(char *command, int *nr_tokens, char *tokens[])
 {
+	/* Jisu updated 'parse_command' function in order to detect quotation sentence as one token. */
 	char *curr = command;
 	int token_started = false;
 	int quotation_on = false;
-    *nr_tokens = 0;
+    	*nr_tokens = 0;
 
 	while (*curr != '\0') {
         if (strncmp(curr, "\"", strlen("\""))==0){
